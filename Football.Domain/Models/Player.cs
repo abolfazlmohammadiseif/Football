@@ -11,8 +11,6 @@ namespace Football.Domain.Models
         public int RedCard { get; set; }
         public int MinutesPlayed { get; set; }
         
-        //public ICollection<MatchPlayer> HomeMatches { get; set; }
-        //public ICollection<MatchPlayer> AwayMatches { get; set; }
         public ICollection<Match> HomeMatches { get; set; }
         public ICollection<Match> AwayMatches { get; set; }
         
