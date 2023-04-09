@@ -14,14 +14,11 @@ The aim of this API is to store information about players, managers, referees, m
 
 ## Comments
 
-I have splitted Commands from Queries to implement CQRS pattern and have used the same ORM (EF core) for both, however, different ORMs can also be used, such as Dapper, ADO.Net, etc.
-Within them I have used Repository Pattern, which lets you use different databases too such as nosql ones(elasticsearch, mongoDB,...) or Oracle, etc.
+I have split Commands from Queries to implement the CQRS pattern and have used the same ORM (EF core) for both, however, different ORMs can also be used, such as Dapper, ADO.Net, etc. Within them, I have used Repository Pattern, which lets you use different databases too such as NoSQL ones(elasticsearch, mongoDB,...) or Oracle, etc.
 
-Regarding the Statistics Controller, in interview-api.azurewebsites.net//api/Statistics/yellowcards output, there is a "team" property which does not exist in the Models. So I just calculate all red and yellow cards for all or specific player.
-For goal 5 (frontend) I could use some simple Js/Css pages to present data, but as I had a surgery on my eyes, I could not look at monitor screen for a long time. So I skipped this one. (In less than a week I will recover from the sergury completely) 
+Regarding the Statistics Controller, in interview-api.azurewebsites.net//api/Statistics/yellowcards output, there is a "team" property that does not exist in the Models. So I just calculate all red and yellow cards for all or specific players. For goal 5 (frontend) I could use some simple Js/Css pages to present data, but as I had surgery on my eyes, I could not look at the monitor screen for a long time. So I skipped this one. (In less than a week I will recover from the surgery completely)
 
-For the Notification goal, I created a new scheduler project to handle it. I had some problems about it: I didn't get what exactly mean by this "IncorrectAlignment" api because in the description of Github it says goal 4 but in the description on the Api itself, says Goal 2, but the only goal relating to this "IncorrectAlignment" is Goal 3. Also this "IncorrectAlignment" is not clear itself. It accepts a list of Ids. I didn't know what should I send to it. I merged the Ids of home/away players of the match, and sent them in a list to the Api. (I think the most important thing is to send some data about matches 5 minutes befor each match) 
-
+For the Notification goal, I created a new scheduler project to handle it. I had some problems with it: I didn't get what exactly means by this "IncorrectAlignment" API because in the description of Github, it says Goal 4 but in the description of the API itself, it says Goal 2. But the only goal relating to this "IncorrectAlignment" is Goal 3. Also, this "IncorrectAlignment" is not clear. It accepts a list of Ids. I didn't know what I should send to it. I merged the Ids of home/away players of the match and sent them in a list to the Api. (I think the most important thing is to send some data about matches 5 minutes before each match)
 
 
 
