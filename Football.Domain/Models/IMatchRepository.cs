@@ -8,9 +8,6 @@ namespace Football.Domain.Models
 {
     public interface IMatchRepository : IRepository<Match>
     {
-        //Task<Match> GetAsync(int matchId);
-        //Match Add(Match match);
-        //void Update(Match match);
-        //void Delete(Match match);
+        Task<List<Match>> GetUpcomingMatchesAsync(int minute);
     }
 }

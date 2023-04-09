@@ -14,9 +14,6 @@ namespace Football.Infrastructure.Repositories
     {
         public FootballContext Context { get; private set; }
 
-        //public IUnitOfWork UnitOfWork => throw new NotImplementedException();
-
-        //public IUnitOfWork UnitOfWork => _context;
         public MatchRepository(FootballContext context)
         {
             Context = context ?? throw new ArgumentNullException(nameof(context));
@@ -24,11 +21,11 @@ namespace Football.Infrastructure.Repositories
         public async Task<List<Match>> GetAllAsync()
         {
             return await Context.Match
-                .Include(m=> m.HomeManager)
-                .Include(m=> m.AwayManager)
-                .Include(m=> m.Referee)
-                .Include(m=> m.HomePlayers)
-                .Include(m=> m.AwayPlayers)
+                .Include(m => m.HomeManager)
+                .Include(m => m.AwayManager)
+                .Include(m => m.Referee)
+                .Include(m => m.HomePlayers)
+                .Include(m => m.AwayPlayers)
                 .ToListAsync();
         }
         public async Task<Match> GetAsync(int matchId)
@@ -51,7 +48,7 @@ namespace Football.Infrastructure.Repositories
 
             return match;
         }
-       
+
         public Match Add(Match match)
         {
             return Context.Match.Add(match).Entity;
@@ -69,6 +66,15 @@ namespace Football.Infrastructure.Repositories
         {
             await Context.SaveChangesAsync(cancellationToken);
             return true;
+        }
+
+        public async Task<List<Match>> GetUpcomingMatchesAsync(int minute)
+        {
+            return await Context.Match
+                .Where(m => m.KickoffTime <= DateTime.Now.AddMinutes(minute) && m.KickoffTime >= DateTime.Now.AddMinutes(minute - 1))
+                .Include(m => m.HomePlayers)
+                .Include(m => m.AwayPlayers)
+                .ToListAsync();
         }
     }
 }

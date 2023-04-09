@@ -21,24 +21,6 @@ namespace Football.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<MatchPlayer>(x =>
-            //    {
-            //        x.HasOne(y => y.AwayMatch)
-            //        .WithMany(y => y.AwayPlayers)
-            //        .HasForeignKey(y => y.AwayMatchId);
-
-            //        x.HasOne(y => y.HomeMatch)
-            //        .WithMany(y => y.HomePlayers)
-            //        .HasForeignKey(y => y.HomeMatchId);
-
-            //        x.HasOne(y => y.AwayPlayer)
-            //        .WithMany(y => y.AwayMatches)
-            //        .HasForeignKey(y => y.AwayPlayerId);
-
-            //        x.HasOne(y => y.HomePlayer)
-            //        .WithMany(y => y.HomeMatches)
-            //        .HasForeignKey(y => y.HomePlayerId);
-            //    });
             modelBuilder
                 .Entity<Match>()
                 .HasMany(p => p.HomePlayers)

@@ -6,7 +6,6 @@ namespace Football.Domain.Seedwork
 {
     public abstract class Entity
     {
-        int? _requestedHashCode;
         int _Id;
         public virtual int Id
         {
