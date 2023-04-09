@@ -21,38 +21,16 @@ The aim of this API is to store information about players, managers, referees, m
 5. The other controllers (Manager, Match, Player, Referee) are not well implemented. What are the things you would improve? Provide that information in comments with //TODO:
 6. Create the frontend with a List of statistics (no Razor allowed, no new endpoints allowed)
 
-## Instructions
+## Comments
 
-1. Clone the repository and execute it, it should compile but once run some errors might appear
-2. Resolve every Goal 
-3. The Web API must persist the data in whatever database you feel comfortable.
-4. The code must be available in a Github repository.
-5. In order to complete Goal 4 Go to [this link](http://interview-api.azurewebsites.net/swagger/index.html) and consume /api/IncorrectAlignment
-6. In the default implementation a local Database is created in C:\Users\[user]\AppData\Local\Microsoft\Microsoft SQL Server Local DB\Instances\MSSQLLocalDB
-7. We have initialized some Entities but Matches are empty, feel free to initialize them.
-8. Once you have finished the exercise send an Email (javier@fxstreet.com and alain@fxstreet.com) following the Email Template described bellow.
+I have splitted Commands from Queries to implement CQRS pattern and have used the same ORM (EF core) for both, however, different ORMs can also be used, such as Dapper, ADO.Net, etc.
+Within them I have used Repository Pattern, which lets you use different databases too such as nosql ones(elasticsearch, mongoDB,...) or Oracle, etc.
 
-## Rules
+Regarding the Statistics Controller, in interview-api.azurewebsites.net//api/Statistics/yellowcards output, there is a "team" property which does not exist in the Models. So I just calculate all red and yellow cards for all or specific player.
+For goal 5 (frontend) I could use some simple Js/Css pages to present data, but as I had a surgery on my eyes, I could not look at monitor screen for a long time. So I skipped this one. (In less than a week I will recover from the sergury completely) 
 
-1. The code must be in .net Core.
-2. The code must be available in GitHub.
-4. There is no time for completition, but bear in mind that interview process can be close at any time.
+For the Notification goal, I created a new scheduler project to handle it. I had some problems about it: I didn't get what exactly mean by this "IncorrectAlignment" api because in the description of Github it says goal 4 but in the description on the Api itself, says Goal 2, but the only goal relating to this "IncorrectAlignment" is Goal 3. Also this "IncorrectAlignment" is not clear itself. It accepts a list of Ids. I didn't know what should I send to it. I merged the Ids of home/away players of the match, and sent them in a list to the Api. (I think the most important thing is to send some data about matches 5 minutes befor each match) 
 
-## Coding Tips
 
-1. The controller IncorrectAlignment is the endpoint that you need to consume for the GOAL 4 of the exercise.
-2. Take into account that we will probably switch repository type to other technology like MongoDB
-3. As department we strongly believe in Clean Code and SOLID Principles :heart_eyes:, show us that you too.
-4. We want to see your testing capabilities, despite is a CRUD web app, the GOAL 4 gives some room for it.
-5. If you feel comfortable you can use some DevOps tool (Azure Devops, jenkins, etc..) to deploy the Web API but is not compulsive.
-6. IMPORTANT :running: In case you didn't have the time to include certain capability/feature/technology comment them on the email and we will discuss it later on the interview.
 
-## Email Template
 
-Subject: FXStreet Interview - [Your full name]
-
-Body: 
-
-* Github Url
-* Persistence Technology + Screenshot of the model
-* Comments
